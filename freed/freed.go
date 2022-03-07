@@ -60,6 +60,7 @@ func (client *FreeDClient) read_freed_data_2(data []byte) int32 {
 
 func (client *FreeDClient) Start() {
 	fmt.Printf("Server Listening")
+	defer client.uDPServer.Close()
 	for {
 		buffer := make([]byte, 29)
 		_, _, err := client.uDPServer.ReadFromUDP(buffer)
